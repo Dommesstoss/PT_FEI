@@ -129,7 +129,7 @@ int maximum(const int *data, std::size_t length, Result *result) {
 
     int maxim = data[0];
 
-    for(int i = 0; i<length; i++)
+    for(std::size_t i = 0; i<length; i++)
     {
         if(maxim < data[i])
         {
@@ -274,7 +274,7 @@ Date* create(int day, int month, int year) {
 void destroy(Date **date) {
     // TODO
 
-    if(data != nullptr && *date !=nullptr)
+    if(date != nullptr && *date !=nullptr)
     {
         delete (*date);
         *date = nullptr;
@@ -320,6 +320,7 @@ bool isInLeapYear(const Date *date) {
         }
     return true;
     }
+    return false;
 }
 
 //-------------------------------------------------------------------------------------------------
