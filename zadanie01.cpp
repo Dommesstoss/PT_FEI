@@ -162,19 +162,19 @@ int maximum(const int *data, std::size_t length, Result *result) {
 */
 int numDigits(int value) {
     // TODO
+    if (value == 0) {
+        return 1;
+    }
+    
     int counter = 0;
 
-    if(value<=0)
-    {
-        counter+=1;
-        value = abs(value);
+    if (value < 0) {
+        counter++;
     }
 
-    for(int i = 0; value>=1; i++)
-    {
-        
-        value = value /10;
-        counter+=1;
+    while (value != 0) {
+        value /= 10;
+        counter++;
     }
 
     return counter;
@@ -351,7 +351,7 @@ bool isValid(const Date *date) {
         return false;
     }
     
-    if (date->day <= 0 || date->month <= 0 || date->month > 12) {
+    if (date->year <= 0 || date->month <= 0 || date->month > 12 || date->day <= 0) {
         return false;
     }
 
@@ -367,11 +367,10 @@ bool isValid(const Date *date) {
         }
     }
     else if (date->month == 2) {
-        bool Leap = true;
-        if(date->year%4==0){
-            if(date->year%100==0 && date->year%400!=0)
-            {
-                Leap = false;
+        bool Leap = false;
+        if (date->year % 4 == 0) {
+            if (date->year % 100 != 0 || date->year % 400 == 0) {
+                Leap = true;
             }
         }
 

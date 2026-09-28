@@ -69,20 +69,19 @@ int maximum(const int *data, std::size_t length, Result* result)
 }*/
 
 /*int numDigits(int value){
-
+    if (value == 0) {
+        return 1;
+    }
+    
     int counter = 0;
 
-    if(value<=0)
-    {
-        counter+=1;
-        value = abs(value);
+    if (value < 0) {
+        counter++;
     }
 
-    for(int i = 0; value>=1; i++)
-    {
-        
-        value = value /10;
-        counter+=1;
+    while (value != 0) {
+        value /= 10;
+        counter++;
     }
 
     return counter;
