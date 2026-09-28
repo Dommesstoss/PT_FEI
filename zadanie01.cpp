@@ -208,6 +208,25 @@ int numDigits(int value) {
 */
 void print(const Date *date, const char *format) {
     // TODO
+    for(int i = 0; format[i]!='\0'; i++)
+    {
+        if(format[i] == 'D')
+        {
+            std::cout << date->day;
+            continue;
+        }
+        else if(format[i] == 'M')
+        {
+            std::cout << date->month;
+            continue;
+        }
+        else if(format[i] == 'Y')
+        {
+            std::cout << date->year;
+            continue;
+        }
+        std::cout << format[i];
+    }
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -227,7 +246,15 @@ void print(const Date *date, const char *format) {
 */
 Date* create(int day, int month, int year) {
     // TODO
-    return nullptr; // tento riadok zmente podla zadania, je tu len kvoli kompilacii
+    Date *den = new Date;
+
+    den->year = year;
+
+    den->month = month;
+
+    den->day = day;
+
+    return den; 
 }
 
 //-------------------------------------------------------------------------------------------------

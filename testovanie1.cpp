@@ -88,9 +88,9 @@ int maximum(const int *data, std::size_t length, Result* result)
     return counter;
 }*/
 
-void print(const Date *date, const char *format)
+/*void print(const Date *date, const char *format)
 {
-    for(int i = 0; i<strlen(format); i++)
+    for(int i = 0; format[i]!='\0'; i++)
     {
         if(format[i] == 'D')
         {
@@ -109,9 +109,37 @@ void print(const Date *date, const char *format)
         }
         std::cout << format[i];
     }
+}*/
+
+Date* create(int day, int month, int year)
+{
+    Date *den = new Date;
+
+    den->year = year;
+
+    den->month = month;
+
+    den->day = day;
+
+    return den;
 }
+
+
 
 int main()
 {
+    Date *d1 = create(28, 9, 2026);
 
+    // Проверяем, что по этому адресу действительно лежат нужные значения
+    std::cout << "Den: " << d1->day << "\n";
+    std::cout << "Mesiac: " << d1->month << "\n";
+    std::cout << "Rok: " << d1->year << "\n";
+
+    // Обязательно освобождаем память в конце проверки!
+    delete d1;
+    d1 = nullptr;
+
+    return 0;
+
+    return 0;
 }
