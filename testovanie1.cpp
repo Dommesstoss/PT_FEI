@@ -44,7 +44,7 @@ void uloha3(Position *position)
 
 
 }
-
+/*
 int maximum(const int *data, std::size_t length, Result* result)
 {
     if(length == 0){ 
@@ -66,37 +66,37 @@ int maximum(const int *data, std::size_t length, Result* result)
     return maxim;
 
 
+}*/
+
+int numDigits(int value){
+
+    int counter = 0;
+
+    if(value<=0)
+    {
+        counter+=1;
+        value = abs(value);
+    }
+
+    for(int i = 0; value>=1; i++)
+    {
+        
+        value = value /10;
+        counter+=1;
+    }
+
+    return counter;
 }
 
 
 
 int main()
 {
-    Result res;
+    int value = -18450;
 
-    // --- Тест 1: Обычный массив с числами ---
-    int arr1[] = {1, 2, 5, 0, 1};
-    int max1 = maximum(arr1, 5, &res);
-    
-    std::cout << "Test 1:\n";
-    std::cout << "Max: " << max1 << "\n";
-    std::cout << "Status: " << (res == Result::SUCCESS ? "SUCCESS" : "FAILURE") << "\n\n";
+    int kolvo = numDigits(value);
 
-    // --- Тест 2: Массив с отрицательными числами ---
-    int arr2[] = {-5, -2, -10};
-    int max2 = maximum(arr2, 3, &res);
-    
-    std::cout << "Test 2:\n";
-    std::cout << "Max: " << max2 << "\n";
-    std::cout << "Status: " << (res == Result::SUCCESS ? "SUCCESS" : "FAILURE") << "\n\n";
-
-    // --- Тест 3: Пустой массив ---
-    int arr3[] = {};
-    int max3 = maximum(arr3, 0, &res);
-    
-    std::cout << "Test 3 (Empty array):\n";
-    std::cout << "Max: " << max3 << " (INT_MIN)\n";
-    std::cout << "Status: " << (res == Result::SUCCESS ? "SUCCESS" : "FAILURE") << "\n";
+    std::cout << "kolvo znakov -> " << kolvo;
 
     return 0;
 
