@@ -111,7 +111,7 @@ int maximum(const int *data, std::size_t length, Result* result)
     }
 }*/
 
-Date* create(int day, int month, int year)
+/*Date* create(int day, int month, int year)
 {
     Date *den = new Date;
 
@@ -122,24 +122,40 @@ Date* create(int day, int month, int year)
     den->day = day;
 
     return den;
+}*/
+
+/*void destroy(Date **date) {
+    // TODO
+
+    if(data != nullptr && *date !=nullptr)
+    {
+        delete (*date);
+        *date = nullptr;
+    }
+
+}*/
+
+
+bool isInLeapYear(const Date *date) {
+  if(date == nullptr)
+  {
+    return false;
+  }
+  
+  if(date->year%4==0){
+    if(date->year%100==0 && date->year%400!=0)
+    {
+        return false;
+    }
+    return true;
+  }
 }
 
 
 
 int main()
 {
-    Date *d1 = create(28, 9, 2026);
 
-    // Проверяем, что по этому адресу действительно лежат нужные значения
-    std::cout << "Den: " << d1->day << "\n";
-    std::cout << "Mesiac: " << d1->month << "\n";
-    std::cout << "Rok: " << d1->year << "\n";
-
-    // Обязательно освобождаем память в конце проверки!
-    delete d1;
-    d1 = nullptr;
-
-    return 0;
 
     return 0;
 }

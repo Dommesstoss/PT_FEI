@@ -308,7 +308,18 @@ void destroy(Date **date) {
 */
 bool isInLeapYear(const Date *date) {
     // TODO
-    return false; // tento riadok zmente podla zadania, je tu len kvoli kompilacii
+    if(date == nullptr)
+    {
+        return false;
+    }
+  
+    if(date->year%4==0){
+        if(date->year%100==0 && date->year%400!=0)
+        {
+            return false;
+        }
+    return true;
+    }
 }
 
 //-------------------------------------------------------------------------------------------------
