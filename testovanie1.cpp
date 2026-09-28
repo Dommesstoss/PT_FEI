@@ -136,7 +136,7 @@ int maximum(const int *data, std::size_t length, Result* result)
 }*/
 
 
-bool isInLeapYear(const Date *date) {
+/*bool isInLeapYear(const Date *date) {
   if(date == nullptr)
   {
     return false;
@@ -149,6 +149,48 @@ bool isInLeapYear(const Date *date) {
     }
     return true;
   }
+}*/
+
+bool isValid(const Date *date) {
+    if(date == nullptr)
+    {
+        return false;
+    }
+    
+    if (date->day <= 0 || date->month <= 0 || date->month > 12) {
+        return false;
+    }
+
+
+    if (date->month == 4 || date->month == 6 || date->month == 9 || date->month == 11) {
+        if (date->day > 30) {
+            return false;
+        }
+    }
+    else if (date->month == 1 || date->month == 3 || date->month == 5 || date->month == 7 || date->month == 8 || date->month == 10 || date->month == 12) {
+        if (date->day > 31) {
+            return false;
+        }
+    }
+    else if (date->month == 2) {
+        bool Leap = true;
+        if(date->year%4==0){
+            if(date->year%100==0 && date->year%400!=0)
+            {
+                Leap = false;
+            }
+        }
+
+        if (Leap && date->day > 29) {
+            return false;
+        }
+        if (!Leap && date->day > 28) {
+            return false;
+        } 
+    }
+
+
+    return true;
 }
 
 
