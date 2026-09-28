@@ -273,6 +273,13 @@ Date* create(int day, int month, int year) {
 */
 void destroy(Date **date) {
     // TODO
+
+    if(data != nullptr && *date !=nullptr)
+    {
+        delete (*date);
+        *date = nullptr;
+    }
+
 }
 
 //-------------------------------------------------------------------------------------------------
