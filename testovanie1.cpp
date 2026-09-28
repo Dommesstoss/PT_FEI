@@ -68,7 +68,7 @@ int maximum(const int *data, std::size_t length, Result* result)
 
 }*/
 
-int numDigits(int value){
+/*int numDigits(int value){
 
     int counter = 0;
 
@@ -86,18 +86,32 @@ int numDigits(int value){
     }
 
     return counter;
+}*/
+
+void print(const Date *date, const char *format)
+{
+    for(int i = 0; i<strlen(format); i++)
+    {
+        if(format[i] == 'D')
+        {
+            std::cout << date->day;
+            continue;
+        }
+        else if(format[i] == 'M')
+        {
+            std::cout << date->month;
+            continue;
+        }
+        else if(format[i] == 'Y')
+        {
+            std::cout << date->year;
+            continue;
+        }
+        std::cout << format[i];
+    }
 }
-
-
 
 int main()
 {
-    int value = -18450;
-
-    int kolvo = numDigits(value);
-
-    std::cout << "kolvo znakov -> " << kolvo;
-
-    return 0;
 
 }
