@@ -423,7 +423,35 @@ bool isPalindrome(const List *list) {
 
 int sumNodes(const List *list, const size_t n) {
     // TODO
-    return -1; // tento riadok zmente podla zadania, je tu len kvoli kompilacii
+ if(n == 0)
+    {
+        return 0;
+    }
+
+    if(list->first == nullptr)
+    {
+        return 0;
+    }
+    
+    int counter = 0;
+    int sum = 0;
+    if(n == 1)
+    {
+
+    sum = list->first->data;
+
+    return sum;
+    }
+    const Node* Data = list->first;
+
+    while(counter!=n)
+    {
+        sum += Data->data;
+        Data = Data->next;
+        counter++;
+    }
+
+    return sum;
 }
 
 //-------------------------------------------------------------------------------------------------

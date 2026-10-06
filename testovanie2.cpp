@@ -110,7 +110,7 @@ struct ListData {
 }*/
 
 
-List *joinLists(List *list1, List *list2) {
+/*List *joinLists(List *list1, List *list2) {
     List* spojka = new List;
 
     spojka->first = nullptr;
@@ -142,6 +142,56 @@ List *joinLists(List *list1, List *list2) {
     
 
     return spojka;
+}*/
+
+/*void removeLastNode(List *list) {
+    // TODO
+
+    if(list->first == nullptr)
+    {
+        return;
+    }
+
+    Node* erase = list->first;
+    if(erase->next == nullptr)
+    {
+        delete list->first;
+        list->first = nullptr;
+        return;
+    }
+
+    while(erase->next->next != nullptr)
+    {
+        erase = erase->next;
+    }
+
+    delete erase->next;
+    erase->next = nullptr;
+
+}*/
+
+int sumNodes(const List *list, const size_t n) {
+    if(n == 0)
+    {
+        return 0;
+    }
+
+    if(list->first == nullptr)
+    {
+        return 0;
+    }
+
+    int counter = 1;
+    int sum = list->first->data;
+
+    while(counter!=n)
+    {
+        sum += list->first->next->data;
+        list->first = list->first->next;
+        counter++;
+    }
+
+    return sum;
 }
 
 int main() {
