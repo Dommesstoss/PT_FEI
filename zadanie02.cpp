@@ -273,7 +273,37 @@ void insertNode(List *sortedList, const int val) {
 
 List *joinLists(List *list1, List *list2) {
     // TODO
-    return nullptr; // tento riadok zmente podla zadania, je tu len kvoli kompilacii
+    List* spojka = new List;
+
+    spojka->first = nullptr;
+    if(list1->first == nullptr && list2->first == nullptr)
+    {
+        return spojka;
+    }
+
+    spojka->first = list1->first;
+
+    if(list1->first != nullptr && list2->first == nullptr)
+    {
+        return spojka;
+    }
+    else if(list1->first == nullptr && list2->first != nullptr)
+    {
+        spojka->first = list2->first;
+        return spojka;
+    }
+
+    Node* cure = spojka->first;
+
+    while(cure->next!=nullptr)
+    {
+        cure = cure->next;
+    }
+
+    cure->next = list2->first;
+    
+
+    return spojka;
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -301,7 +331,29 @@ List *joinLists(List *list1, List *list2) {
 */
 
 void removeLastNode(List *list) {
-    // TODO
+     // TODO
+
+    if(list->first == nullptr)
+    {
+        return;
+    }
+
+    Node* erase = list->first;
+    if(erase->next == nullptr)
+    {
+        delete list->first;
+        list->first = nullptr;
+        return;
+    }
+
+    while(erase->next->next != nullptr)
+    {
+        erase = erase->next;
+    }
+
+    delete erase->next;
+    erase->next = nullptr;
+
 }
 
 //-------------------------------------------------------------------------------------------------
