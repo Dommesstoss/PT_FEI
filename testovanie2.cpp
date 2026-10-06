@@ -68,7 +68,7 @@ struct ListData {
     return newOne;
 }*/
 
-void insertNode(List *sortedList, const int val) {
+/*void insertNode(List *sortedList, const int val) {
     // TODO
     Node* sortedVal = new Node;
     sortedVal->data = val;
@@ -107,6 +107,41 @@ void insertNode(List *sortedList, const int val) {
         cur->next = sortedVal;
     }
 
+}*/
+
+
+List *joinLists(List *list1, List *list2) {
+    List* spojka = new List;
+
+    spojka->first = nullptr;
+    if(list1->first == nullptr && list2->first == nullptr)
+    {
+        return spojka;
+    }
+
+    spojka->first = list1->first;
+
+    if(list1->first != nullptr && list2->first == nullptr)
+    {
+        return spojka;
+    }
+    else if(list1->first == nullptr && list2->first != nullptr)
+    {
+        spojka->first = list2->first;
+        return spojka;
+    }
+
+    Node* cure = spojka->first;
+
+    while(cure->next!=nullptr)
+    {
+        cure = cure->next;
+    }
+
+    cure->next = list2->first;
+    
+
+    return spojka;
 }
 
 int main() {
