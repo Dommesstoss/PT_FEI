@@ -135,7 +135,34 @@ void appendNode(List *list, const int val) {
 
 List *createList(const ListData *listData) {
     // TODO
-    return nullptr; // tento riadok zmente podla zadania, je tu len kvoli kompilacii
+    List* newOne = new List;
+
+    Node* last = nullptr;
+    if(ListData->len == 0)
+    {
+        newOne->first = nullptr;
+        return newOne;
+    }
+
+    for(size_t i = 0; i<ListData->len; i++)
+    {
+    Node *nova = new Node;
+
+    nova->data = ListData->data[i];
+    nova->next = nullptr;
+
+    if(i == 0)
+    {
+        newOne->first = nova;
+    }
+    else{
+        last->next = nova;
+    }
+
+    last = nova;
+
+    }
+    return newOne;
 }
 
 //-------------------------------------------------------------------------------------------------

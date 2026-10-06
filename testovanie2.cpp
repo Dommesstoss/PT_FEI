@@ -16,7 +16,7 @@ struct ListData {
     size_t len; // dlzka pola 'data'
 };
 
-void appendNode(List *list, const int val) {
+/*void appendNode(List *list, const int val) {
     // TODO
     Node *newNode = new Node;
     newNode->data = val;
@@ -35,55 +35,40 @@ void appendNode(List *list, const int val) {
 
     cur->next = newNode;
     }
-}
+}*/
 
-void printList(const List *list) {
-    if (list == nullptr || list->first == nullptr) {
-        cout << "List: () [EMPTY]" << endl;
-        return;
+List *createList(const ListData *listData) {
+    List* newOne = new List;
+
+    Node* last = nullptr;
+    if(ListData->len == 0)
+    {
+        newOne->first = nullptr;
+        return newOne;
     }
 
-    cout << "List: ";
-    Node *cur = list->first;
-    while (cur != nullptr) {
-        cout << cur->data;
-        if (cur->next != nullptr) {
-            cout << " -> ";
-        }
-        cur = cur->next;
-    }
-    cout << " -> nullptr" << endl;
-}
+    for(size_t i = 0; i<ListData->len; i++)
+    {
+    Node *nova = new Node;
 
-// Вспомогательная функция для очистки памяти после тестов
-void clearList(List *list) {
-    if (list == nullptr) return;
-    Node *cur = list->first;
-    while (cur != nullptr) {
-        Node *next = cur->next;
-        delete cur;
-        cur = next;
+    nova->data = ListData->data[i];
+    nova->next = nullptr;
+
+    if(i == 0)
+    {
+        newOne->first = nova;
     }
-    list->first = nullptr;
+    else{
+        last->next = nova;
+    }
+
+    last = nova;
+
+    }
+    return newOne;
 }
 
 int main() {
-    // Создаем структуру списка и обнуляем head
-    List myList;
-    myList.first = nullptr;
-
-    cout << "=== TEST 1: Добавление в пустой список ===" << endl;
-    appendNode(&myList, 5);
-    printList(&myList); // Ожидается: List: 5 -> nullptr
-
-    cout << "\n=== TEST 2: Добавление элементов в конец ===" << endl;
-    appendNode(&myList, 10);
-    appendNode(&myList, 15);
-    appendNode(&myList, -85);
-    printList(&myList); // Ожидается: List: 5 -> 10 -> 15 -> -85 -> nullptr
-
-    // Очищаем память
-    clearList(&myList);
-
+   
     return 0;
 }
