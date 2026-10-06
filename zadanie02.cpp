@@ -200,6 +200,43 @@ List *createList(const ListData *listData) {
 
 void insertNode(List *sortedList, const int val) {
     // TODO
+    Node* sortedVal = new Node;
+    sortedVal->data = val;
+    sortedVal->next = nullptr;
+    int paci = 0;
+
+    if(sortedList->first == nullptr)
+    {
+        sortedList->first = sortedVal;
+        return;
+    }
+    
+    if(sortedVal->data <=sortedList->first->data)
+        {
+            sortedVal->next = sortedList->first;
+            sortedList->first = sortedVal;
+            paci = 1;
+            return;
+        }
+    Node* cur = sortedList->first;
+
+    while(cur->next!=nullptr)
+    {
+        
+        if(sortedVal->data <= cur->next->data)
+        {
+            sortedVal->next = cur->next;
+            cur->next = sortedVal;
+            paci =1;
+            return;
+        }
+
+        cur=cur->next;
+    }
+    if(paci == 0){
+        cur->next = sortedVal;
+    }
+
 }
 
 //-------------------------------------------------------------------------------------------------
