@@ -195,7 +195,7 @@ struct ListData {
 }*/
 
 
-bool contains(const List *list1, const List *list2) {
+/*bool contains(const List *list1, const List *list2) {
     if(list1->first == nullptr && list2->first==nullptr){
         return true;
     }
@@ -236,6 +236,56 @@ bool contains(const List *list1, const List *list2) {
     }
     
     return true;
+}*/
+
+bool isPalindrome(const List *list) {
+    if(list->first == nullptr)
+    {
+        return true;
+    }
+
+
+    List* re_list = new List;
+    re_list->first = nullptr;
+
+    const Node* cure = list->first;
+    
+    while(cure!=nullptr)
+    {
+        Node* re_cure = new Node;
+        re_cure->data = cure->data;
+
+        re_cure->next = re_list->first;
+        re_list->first = re_cure;
+
+        cure= cure->next;
+    }
+
+    cure=list->first;
+    const Node* re_cure = re_list->first;
+    bool result = true;
+
+    while(cure!=nullptr && re_cure!=nullptr)
+    {
+        if(cure->data!=re_cure->data){
+      
+            result = false;
+            break;
+        }
+
+        cure = cure->next;
+        re_cure = re_cure->next;
+    }
+
+    while (re_list->first != nullptr) {
+        Node* temp = re_list->first;
+        re_list->first = re_list->first->next;
+        delete temp;
+    }
+
+    delete re_list;
+    return result;
+
 }
 
 int main() {
