@@ -488,7 +488,48 @@ int sumNodes(const List *list, const size_t n) {
 
 bool contains(const List *list1, const List *list2) {
     // TODO
-    return false; // tento riadok zmente podla zadania, je tu len kvoli kompilacii
+        if(list1->first == nullptr && list2->first==nullptr){
+        return true;
+    }
+    else if(list1->first == nullptr && list2->first!=nullptr){
+        return false;
+    }
+    else if(list1->first != nullptr && list2->first == nullptr){
+        return true;
+    }
+
+    
+    const Node* l2_cur = list2->first;
+    
+
+    int counter =0;
+
+    while(l2_cur!=nullptr)
+    {
+        const Node* l1_cur = list1->first;
+        bool found = false;
+
+        while(l1_cur != nullptr)
+        {
+            if(l2_cur->data == l1_cur->data)
+            {
+                
+                found = true;
+                break;
+            }
+            l1_cur = l1_cur->next;
+
+        }
+        if(found == false)
+        {
+            return false;
+        }
+        l2_cur = l2_cur->next;
+    }
+    
+    return true;
+
+
 }
 
 //-------------------------------------------------------------------------------------------------
