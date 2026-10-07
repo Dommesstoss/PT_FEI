@@ -238,7 +238,7 @@ struct ListData {
     return true;
 }*/
 
-bool isPalindrome(const List *list) {
+/*bool isPalindrome(const List *list) {
     if(list->first == nullptr)
     {
         return true;
@@ -286,6 +286,35 @@ bool isPalindrome(const List *list) {
     delete re_list;
     return result;
 
+}*/
+
+List *deepCopyList(const List *list) {
+    List *copy_list = new List;
+    copy_list->first = nullptr;
+
+    if (list->first == nullptr) {
+        return copy_list;
+    }
+
+    const Node *cur = list->first;
+    Node *last = nullptr;
+
+    while (cur != nullptr) {
+        Node *new_node = new Node;
+        new_node->data = cur->data;
+        new_node->next = nullptr;
+
+        if (copy_list->first == nullptr) {
+            copy_list->first = new_node;
+        } else {
+            last->next = new_node;
+        }
+
+        last = new_node;
+        cur = cur->next;
+    }
+
+    return copy_list;
 }
 
 int main() {

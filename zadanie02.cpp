@@ -391,7 +391,53 @@ void removeLastNode(List *list) {
 
 bool isPalindrome(const List *list) {
     // TODO
-    return false; // tento riadok zmente podla zadania, je tu len kvoli kompilacii
+    if(list->first == nullptr)
+    {
+        return true;
+    }
+
+
+    List* re_list = new List;
+    re_list->first = nullptr;
+
+    const Node* cure = list->first;
+    
+    while(cure!=nullptr)
+    {
+        Node* re_cure = new Node;
+        re_cure->data = cure->data;
+
+        re_cure->next = re_list->first;
+        re_list->first = re_cure;
+
+        cure= cure->next;
+    }
+
+    cure=list->first;
+    const Node* re_cure = re_list->first;
+    bool result = true;
+
+    while(cure!=nullptr && re_cure!=nullptr)
+    {
+        if(cure->data!=re_cure->data){
+      
+            result = false;
+            break;
+        }
+
+        cure = cure->next;
+        re_cure = re_cure->next;
+    }
+
+    while (re_list->first != nullptr) {
+        Node* temp = re_list->first;
+        re_list->first = re_list->first->next;
+        delete temp;
+    }
+
+    delete re_list;
+    return result;
+
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -563,8 +609,34 @@ bool contains(const List *list1, const List *list2) {
 
 List *deepCopyList(const List *list) {
     // TODO
-    return nullptr; // tento riadok zmente podla zadania, je tu len kvoli kompilacii
+    List *copy_list = new List;
+    copy_list->first = nullptr;
+
+    if (list->first == nullptr) {
+        return copy_list;
+    }
+
+    const Node *cur = list->first;
+    Node *last = nullptr;
+
+    while (cur != nullptr) {
+        Node *new_node = new Node;
+        new_node->data = cur->data;
+        new_node->next = nullptr;
+
+        if (copy_list->first == nullptr) {
+            copy_list->first = new_node;
+        } else {
+            last->next = new_node;
+        }
+
+        last = new_node;
+        cur = cur->next;
+    }
+
+    return copy_list;
 }
+
 
 //-------------------------------------------------------------------------------------------------
 // 10. ULOHA (0.4 bodu)
