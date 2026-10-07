@@ -666,7 +666,22 @@ List *deepCopyList(const List *list) {
 
 Node *findLastNodeOccurrence(const List *list, const int val) {
     // TODO
-    return nullptr; // tento riadok zmente podla zadania, je tu len kvoli kompilacii
+    if(list->first == nullptr)
+    {
+        return nullptr;
+    }   
+
+    Node *cur = list->first;
+    Node *last_match = nullptr;
+
+    while (cur != nullptr) {
+        if (cur->data == val) {
+            last_match = cur;
+        }
+        cur = cur->next;
+    }
+
+    return last_match;
 }
 
 //-------------------------------------------------------------------------------------------------

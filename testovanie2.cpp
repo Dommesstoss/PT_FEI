@@ -288,7 +288,7 @@ struct ListData {
 
 }*/
 
-List *deepCopyList(const List *list) {
+/*List *deepCopyList(const List *list) {
     List *copy_list = new List;
     copy_list->first = nullptr;
 
@@ -315,7 +315,26 @@ List *deepCopyList(const List *list) {
     }
 
     return copy_list;
-}
+}*/
+
+/*Node *findLastNodeOccurrence(const List *list, const int val) {
+    if(list->first == nullptr)
+    {
+        return nullptr;
+    }   
+
+    Node *cur = list->first;
+    Node *last_match = nullptr;
+
+    while (cur != nullptr) {
+        if (cur->data == val) {
+            last_match = cur;
+        }
+        cur = cur->next;
+    }
+
+    return last_match;
+}*/
 
 int main() {
    
