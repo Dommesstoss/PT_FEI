@@ -138,17 +138,17 @@ List *createList(const ListData *listData) {
     List* newOne = new List;
 
     Node* last = nullptr;
-    if(ListData->len == 0)
+    if(listData->len == 0)
     {
         newOne->first = nullptr;
         return newOne;
     }
 
-    for(size_t i = 0; i<ListData->len; i++)
+    for(size_t i = 0; i<listData->len; i++)
     {
     Node *nova = new Node;
 
-    nova->data = ListData->data[i];
+    nova->data = listData->data[i];
     nova->next = nullptr;
 
     if(i == 0)
@@ -479,7 +479,7 @@ int sumNodes(const List *list, const size_t n) {
         return 0;
     }
     
-    int counter = 0;
+    size_t counter = 0;
     int sum = 0;
     if(n == 1)
     {
@@ -547,8 +547,6 @@ bool contains(const List *list1, const List *list2) {
     
     const Node* l2_cur = list2->first;
     
-
-    int counter =0;
 
     while(l2_cur!=nullptr)
     {
