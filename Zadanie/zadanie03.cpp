@@ -112,6 +112,25 @@ void insertionSort(int *data, const size_t length) {
 */
 void insertionSort(const char *data[]) {
     // TODO
+    if (data[0]== nullptr || data[1]== nullptr)
+    {
+        return;
+    }
+
+    for(int i = 1; data[i]!=nullptr; i++)
+    {
+        char *key = data[i];
+        int j = i;
+
+        while(j>0 && strcmp(data[j-1], key)<0)
+        {
+            data[j] = data[j-1];
+            j--;
+        }
+
+        data[j] = key;
+
+    }
 }
 
 //-------------------------------------------------------------------------------------------------
