@@ -1,5 +1,5 @@
 /*
-Meno a priezvisko:
+Meno a priezvisko: Dmytro Hodunov
 
 POKYNY:
 (1)  Implementujte funkcie tak, aby splnali popis pri ich deklaraciach.
@@ -60,6 +60,23 @@ struct List {
 */
 void insertionSort(int *data, const size_t length) {
     // TODO
+    if (length <= 1)
+    {
+        return;
+    }
+
+    for (size_t i = 1; i < length; i++) {
+        int key = data[i];
+        int j = i;
+
+        
+        while (j > 0 && data[j - 1] < key) {
+            data[j] = data[j - 1];
+            j--;
+        }
+
+        data[j] = key; 
+    }
 }
 
 //-------------------------------------------------------------------------------------------------
