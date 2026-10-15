@@ -17,7 +17,7 @@ struct List {
 
 
 
-void insertionSort(int *data, const size_t length) {
+/*void insertionSort(int *data, const size_t length) {
     if (length <= 1) return;
 
     for (size_t i = 1; i < length; i++) {
@@ -32,10 +32,10 @@ void insertionSort(int *data, const size_t length) {
 
         data[j] = key; 
     }
-}
+}*/
 
 
-void insertionSort(const char *data[]) {
+/*void insertionSort(const char *data[]) {
     if (data[0]== nullptr || data[1]== nullptr)
     {
         return;
@@ -55,8 +55,40 @@ void insertionSort(const char *data[]) {
         data[j] = key;
 
     }
+}*/
+
+void insertionSort(List * list) {
+    if(list == nullptr||list->first == nullptr || list->first->next == nullptr)
+    {
+        return;
+    }
+
+    Node* sortedHead = nullptr;
+    Node* current = list->first;
+
+    while (current != nullptr) {
+        Node* nextNode = current->next;
+
+        if (sortedHead == nullptr || current->value >= sortedHead->value) {
+            current->next = sortedHead;
+            sortedHead = current;
+        }
+        else
+        {
+            Node* search = sortedHead;
+            while (search->next != nullptr && search->next->value > current->value) {
+                search = search->next;
+            }
+
+            current->next = search->next;
+            search->next = current;
+        }
+        current = nextNode;
+    }
+    list->first = sortedHead;
+
 }
- 
+
 main()
 {
 

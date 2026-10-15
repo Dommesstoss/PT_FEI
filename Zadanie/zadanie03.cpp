@@ -155,6 +155,35 @@ void insertionSort(const char *data[]) {
 */
 void insertionSort(List * list) {
     // TODO
+    if(list == nullptr||list->first == nullptr || list->first->next == nullptr)
+    {
+        return;
+    }
+
+    Node* sortedHead = nullptr;
+    Node* current = list->first;
+
+    while (current != nullptr) {
+        Node* nextNode = current->next;
+
+        if (sortedHead == nullptr || current->value >= sortedHead->value) {
+            current->next = sortedHead;
+            sortedHead = current;
+        }
+        else
+        {
+            Node* search = sortedHead;
+            while (search->next != nullptr && search->next->value > current->value) {
+                search = search->next;
+            }
+
+            current->next = search->next;
+            search->next = current;
+        }
+        current = nextNode;
+    }
+    list->first = sortedHead;
+
 }
 
 //-------------------------------------------------------------------------------------------------
