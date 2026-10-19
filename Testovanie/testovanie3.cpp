@@ -89,6 +89,36 @@ void insertionSort(List * list) {
 
 }
 
+void mergeNeighbours(int *output, const int *input, const size_t low, const size_t middle, const size_t high) {
+    size_t i = low;
+    size_t j = middle;
+    size_t k = low;
+
+    while (i < middle && j < high) {
+        if (input[i] >= input[j]) {
+            output[k] = input[i];
+            i++;
+        } else {
+            output[k] = input[j];
+            j++;
+        }
+        k++;
+    }
+
+    while (i < middle) {
+        output[k] = input[i];
+        i++;
+        k++;
+    }
+
+    while (j < high) {
+        output[k] = input[j];
+        j++;
+        k++;
+    }
+}
+
+
 main()
 {
 
