@@ -274,6 +274,32 @@ void mergeNeighbours(int *output, const int *input, const size_t low, const size
 */
 void mergeSort(int *data, const size_t length) {
     // TODO
+    if (length <= 1) {
+        return;
+    }
+
+    int *temp = new int[length];
+
+    auto mergeSortRecursive = [&](auto& self, size_t low, size_t high) -> void {
+        if (high - low <= 1) {
+            return;
+        }
+
+        size_t middle = low + (high - low) / 2;
+
+        self(self, low, middle);
+        self(self, middle, high);
+
+        mergeNeighbours(temp, data, low, middle, high);
+
+        for (size_t i = low; i < high; i++) {
+            data[i] = temp[i];
+        }
+    };
+
+    mergeSortRecursive(mergeSortRecursive, 0, length);
+
+    delete[] temp;
 }
 
 //-------------------------------------------------------------------------------------------------

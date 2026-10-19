@@ -57,7 +57,7 @@ struct List {
     }
 }*/
 
-void insertionSort(List * list) {
+/*void insertionSort(List * list) {
     if(list == nullptr||list->first == nullptr || list->first->next == nullptr)
     {
         return;
@@ -87,9 +87,9 @@ void insertionSort(List * list) {
     }
     list->first = sortedHead;
 
-}
+}*/
 
-void mergeNeighbours(int *output, const int *input, const size_t low, const size_t middle, const size_t high) {
+/*void mergeNeighbours(int *output, const int *input, const size_t low, const size_t middle, const size_t high) {
     size_t i = low;
     size_t j = middle;
     size_t k = low;
@@ -116,6 +116,35 @@ void mergeNeighbours(int *output, const int *input, const size_t low, const size
         j++;
         k++;
     }
+}*/
+
+void mergeSort(int *data, const size_t length) {
+    if (length <= 1) {
+        return;
+    }
+
+    int *temp = new int[length];
+
+    auto mergeSortRecursive = [&](auto& self, size_t low, size_t high) -> void {
+        if (high - low <= 1) {
+            return;
+        }
+
+        size_t middle = low + (high - low) / 2;
+
+        self(self, low, middle);
+        self(self, middle, high);
+
+        mergeNeighbours(temp, data, low, middle, high);
+
+        for (size_t i = low; i < high; i++) {
+            data[i] = temp[i];
+        }
+    };
+
+    mergeSortRecursive(mergeSortRecursive, 0, length);
+
+    delete[] temp;
 }
 
 
