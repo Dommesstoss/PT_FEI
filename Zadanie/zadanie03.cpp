@@ -119,7 +119,7 @@ void insertionSort(const char *data[]) {
 
     for(int i = 1; data[i]!=nullptr; i++)
     {
-        char *key = data[i];
+        const char *key = data[i];
         int j = i;
 
         while(j>0 && strcmp(data[j-1], key)<0)
@@ -166,14 +166,14 @@ void insertionSort(List * list) {
     while (current != nullptr) {
         Node* nextNode = current->next;
 
-        if (sortedHead == nullptr || current->value >= sortedHead->value) {
+        if (sortedHead == nullptr || current->data >= sortedHead->data) {
             current->next = sortedHead;
             sortedHead = current;
         }
         else
         {
             Node* search = sortedHead;
-            while (search->next != nullptr && search->next->value > current->value) {
+            while (search->next != nullptr && search->next->data > current->data) {
                 search = search->next;
             }
 
