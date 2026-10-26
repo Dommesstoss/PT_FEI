@@ -1,5 +1,5 @@
 /*
-Meno a priezvisko:
+Meno a priezvisko: Dmytro Hodunov
 
 POKYNY:
 (1)  Implementujte funkcie tak, aby splnali popis pri ich deklaraciach.
@@ -53,6 +53,22 @@ struct Weight {
 */
 void bubbleSort(int *data, const size_t length) {
     // TODO
+    if (length < 2 || data == nullptr) {
+        return;
+    }
+    for (size_t i = 0; i < length - 1; ++i) {
+        bool swapped = false;
+        for (size_t j = 0; j < length - 1 - i; ++j) {
+            
+            if (data[j] < data[j + 1]) {
+                std::swap(data[j], data[j + 1]);
+                swapped = true;
+            }
+        }
+        if (!swapped) {
+            break;
+        }
+    }
 }
 
 //-------------------------------------------------------------------------------------------------
