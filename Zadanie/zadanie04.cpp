@@ -252,6 +252,16 @@ size_t partition(int *data, const size_t pivot, const size_t low, const size_t h
 */
 void quickSort(int *data, const size_t low, const size_t high) {
     // TODO
+    if (high <= low || high - low < 2) {
+        return;
+    }
+
+    size_t pivotIndex = getPivotIndex(data, low, high);
+
+    size_t newPivotIndex = partition(data, pivotIndex, low, high);
+
+    quickSort(data, low, newPivotIndex);
+    quickSort(data, newPivotIndex + 1, high);
 }
 
 //-------------------------------------------------------------------------------------------------

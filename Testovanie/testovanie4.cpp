@@ -64,7 +64,7 @@ struct Weight {
     return last;
 }*/
 
-size_t partition(int *data, const size_t pivot, const size_t low, const size_t high) {
+/*size_t partition(int *data, const size_t pivot, const size_t low, const size_t high) {
     size_t last = high - 1;
 
     std::swap(data[pivot], data[last]);
@@ -81,6 +81,19 @@ size_t partition(int *data, const size_t pivot, const size_t low, const size_t h
 
     std::swap(data[i], data[last]);
     return i;
+}*/
+
+void quickSort(int *data, const size_t low, const size_t high) {
+    if (high <= low || high - low < 2) {
+        return;
+    }
+
+    size_t pivotIndex = getPivotIndex(data, low, high);
+
+    size_t newPivotIndex = partition(data, pivotIndex, low, high);
+
+    quickSort(data, low, newPivotIndex);
+    quickSort(data, newPivotIndex + 1, high);
 }
 
 int main(){
