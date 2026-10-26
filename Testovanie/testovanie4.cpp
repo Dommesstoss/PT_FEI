@@ -47,7 +47,7 @@ struct Weight {
     }
 }*/
 
-size_t getPivotIndex(const int *data, const size_t low, const size_t high) {
+/*size_t getPivotIndex(const int *data, const size_t low, const size_t high) {
     size_t mid = (high + low) / 2;
     size_t last = high - 1;
 
@@ -62,6 +62,25 @@ size_t getPivotIndex(const int *data, const size_t low, const size_t high) {
         return mid;
     }
     return last;
+}*/
+
+size_t partition(int *data, const size_t pivot, const size_t low, const size_t high) {
+    size_t last = high - 1;
+
+    std::swap(data[pivot], data[last]);
+
+    int pivotValue = data[last];
+    size_t i = low;
+
+    for (size_t j = low; j < last; ++j) {
+        if (data[j] >= pivotValue) {
+            std::swap(data[i], data[j]);
+            ++i;
+        }
+    }
+
+    std::swap(data[i], data[last]);
+    return i;
 }
 
 int main(){
