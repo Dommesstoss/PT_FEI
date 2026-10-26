@@ -7,14 +7,14 @@ struct Weight {
     int packing; // hmotnost balenia
 };
 
-void bubbleSort(int *data, const size_t length) {
+/*void bubbleSort(int *data, const size_t length) {
     if (length < 2 || data == nullptr) {
         return;
     }
     for (size_t i = 0; i < length - 1; ++i) {
         bool swapped = false;
         for (size_t j = 0; j < length - 1 - i; ++j) {
-о
+
             if (data[j] < data[j + 1]) {
                 std::swap(data[j], data[j + 1]);
                 swapped = true;
@@ -24,4 +24,31 @@ void bubbleSort(int *data, const size_t length) {
             break;
         }
     }
+}*/
+
+void bubbleSort(Weight *data, const size_t length) {
+    if (length < 2 || data == nullptr) {
+        return;
+    }
+    for (size_t i = 0; i < length - 1; ++i) {
+        bool swapped = false;
+        for (size_t j = 0; j < length - 1 - i; ++j) {
+            int currentWeight = data[j].product + data[j].packing;
+            int nextWeight = data[j + 1].product + data[j + 1].packing;
+
+            if (currentWeight < nextWeight) {
+                std::swap(data[j], data[j + 1]);
+                swapped = true;
+            }
+        }
+        if (!swapped) {
+            break;
+        }
+    }
+}
+
+int main(){
+
+
+    return 0;
 }
