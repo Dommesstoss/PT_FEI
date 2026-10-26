@@ -26,7 +26,7 @@ struct Weight {
     }
 }*/
 
-void bubbleSort(Weight *data, const size_t length) {
+/*void bubbleSort(Weight *data, const size_t length) {
     if (length < 2 || data == nullptr) {
         return;
     }
@@ -45,6 +45,23 @@ void bubbleSort(Weight *data, const size_t length) {
             break;
         }
     }
+}*/
+
+size_t getPivotIndex(const int *data, const size_t low, const size_t high) {
+    size_t mid = (high + low) / 2;
+    size_t last = high - 1;
+
+    int a = data[low];
+    int b = data[mid];
+    int c = data[last];
+
+    if ((a >= b && a <= c) || (a <= b && a >= c)) {
+        return low;
+    }
+    if ((b >= a && b <= c) || (b <= a && b >= c)) {
+        return mid;
+    }
+    return last;
 }
 
 int main(){

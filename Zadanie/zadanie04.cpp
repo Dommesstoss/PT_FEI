@@ -162,7 +162,20 @@ void bubbleSort(Weight *data, const size_t length) {
 */
 size_t getPivotIndex(const int *data, const size_t low, const size_t high) {
     // TODO
-    return ~0; // tento riadok zmente podla zadania, tu je len kvoli kompilacii
+    size_t mid = (high + low) / 2;
+    size_t last = high - 1;
+
+    int a = data[low];
+    int b = data[mid];
+    int c = data[last];
+
+    if ((a >= b && a <= c) || (a <= b && a >= c)) {
+        return low;
+    }
+    if ((b >= a && b <= c) || (b <= a && b >= c)) {
+        return mid;
+    }
+    return last;
 }
 
 //-------------------------------------------------------------------------------------------------
