@@ -154,8 +154,6 @@ void buildHeapSiftUp(int data[], const size_t length)
 void siftDown(int data[], const size_t topIndex, const size_t length)
 {
     // TODO
-    void siftDown(int data[], const size_t topIndex, const size_t length)
-{
     size_t cur = topIndex;
 
     while (cur < length)
@@ -182,7 +180,6 @@ void siftDown(int data[], const size_t topIndex, const size_t length)
 
         cur = smallest;
     }
-}
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -211,6 +208,13 @@ void siftDown(int data[], const size_t topIndex, const size_t length)
 void buildHeapSiftDown(int data[], const size_t length)
 {
     // TODO
+    if (length <= 1) {
+        return;
+    }
+
+    for (size_t i = length / 2; i > 0; --i) {
+        siftDown(data, i - 1, length);
+    }
 }
 
 //-------------------------------------------------------------------------------------------------

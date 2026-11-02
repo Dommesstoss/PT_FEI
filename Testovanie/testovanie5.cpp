@@ -78,6 +78,18 @@ void siftDown(int data[], const size_t topIndex, const size_t length)
     }
 }
 
+
+void buildHeapSiftDown(int data[], const size_t length)
+{
+    if (length <= 1) {
+        return;
+    }
+
+    for (size_t i = length / 2; i > 0; --i) {
+        siftDown(data, i - 1, length);
+    }
+}
+
 int main() {
 
     // tu mozete doplnit testovaci kod
