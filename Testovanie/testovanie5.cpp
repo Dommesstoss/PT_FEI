@@ -90,6 +90,23 @@ void buildHeapSiftDown(int data[], const size_t length)
     }
 }
 
+void heapSort(int data[], const size_t length)
+{
+    if (length <= 1) {
+        return;
+    }
+
+    buildHeapSiftDown(data, length);
+
+    for (size_t i = length - 1; i > 0; --i) {
+        int temp = data[0];
+        data[0] = data[i];
+        data[i] = temp;
+
+        siftDown(data, 0, i);
+    }
+}
+
 int main() {
 
     // tu mozete doplnit testovaci kod
