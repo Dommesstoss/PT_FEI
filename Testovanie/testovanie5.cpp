@@ -48,6 +48,35 @@ void buildHeapSiftUp(int data[], const size_t length)
     }
 }
 
+void siftDown(int data[], const size_t topIndex, const size_t length)
+{
+    size_t cur = topIndex;
+
+    while (cur < length)
+    {
+        size_t left = 2 * cur + 1;
+        size_t right = 2 * cur + 2;
+        size_t smallest = cur;
+
+        if (left < length && data[left] < data[smallest]) {
+            smallest = left;
+        }
+
+        if (right < length && data[right] < data[smallest]) {
+            smallest = right;
+        }
+
+        if (smallest == cur) {
+            break;
+        }
+
+        int temp = data[cur];
+        data[cur] = data[smallest];
+        data[smallest] = temp;
+
+        cur = smallest;
+    }
+}
 
 int main() {
 
