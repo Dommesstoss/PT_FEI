@@ -108,6 +108,18 @@ void siftUp(int data[], const size_t addIndex)
 void buildHeapSiftUp(int data[], const size_t length)
 {
     // TODO
+    for(size_t i = 0; i<length; i++)
+    {
+        if(i>0){
+            size_t parent = (i-1)/2;
+
+            if(data[i] < data[parent])
+            {
+                siftUp(data, i);
+            }
+        }
+
+    }
 }
 
 //-------------------------------------------------------------------------------------------------
